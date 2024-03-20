@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>PARAMETER DALAM FUNGSI</title>
+        <script language="javascript">
+            function Warning(pesan_kita)
+            {
+                alert(pesan_kita);
+            }
+            function password(pesan_prompt, pesan_sukses, pesan_gagal)
+            {
+                var passwd = prompt(pesan_prompt);
+                if (passwd != 'petugas')
+                {
+                    alert(pesan_gagal);
+                }
+                else
+                {
+                    alert(pesan_sukses);
+                }
+            }
+        </script>
+    </head>
+    <body onload="Warning('Dilarang Masuk Selain Petugas!');">
+        <p><b>TEMPAT RAHASIA</b></p>
+        <p>Sekali lagi saya tegaskan jangan memasuki area ini selain petugas. BERBAHAYA!!!</p>
+        <a href="javascript:password('Masukan Password', 'Password Benar!', 'Password Salah!');">Masuk =></a>
+    </body>
+</html>

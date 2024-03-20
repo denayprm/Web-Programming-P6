@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Menampilkan Pesan Warning</title>
+        <script language="JavaScript">
+            var pesan = "Dilarang Masuk Selain Petugas!";
+            function Warning()
+            {
+                alert(pesan);
+            }
+            function password()
+            {
+                var passwd = prompt("Masukan Password");
+                if (passwd != 'petugas')
+                {
+                    alert('Gagal');
+                }
+                else
+                {
+                    alert('Sukses');
+                }
+            }
+        </script>
+    </head>
+    <body onload="Warning();">
+        <p><b>TEMPAT RAHASIA</b></p>
+        <P>Sekali lagi saya tegaskan jangan memasuki area ini selain petugas. BERBAHAYA!!!</P>
+        <a href="javascript:password();">Masuk =></a>
+    </body>
+</html>
