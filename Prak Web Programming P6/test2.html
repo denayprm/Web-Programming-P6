@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tugas 1 Individu Pertemuan 5 - Deni Permana 2210512015</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            background-color: #007bff;
+            color: #fff;
+            font-size: 2rem;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        p {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+        input[type="number"] {
+            font-size: 1.1rem;
+            padding: 0.5rem;
+            width: calc(100% - 22px); /* considering padding and border */
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            border: none;
+            color: #fff;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            padding: 10px 20px;
+            width: calc(50% - 10px); /* considering margin */
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1.2rem;
+            margin: 20px auto;
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculate Average</h1>
+        <p>Enter the three values below and click the "Calculate Average" button. To clear the input fields, click the "Clear" button.</p>
+        <form>
+            <label for="value1">Value 1:</label>
+            <input type="number" id="value1" name="value1" min="0" max="100">
+            <label for="value2">Value 2:</label>
+            <input type="number" id="value2" name="value2" min="0" max="100">
+            <label for="value3">Value 3:</label>
+            <input type="number" id="value3" name="value3" min="0" max="100">
+            <button type="button" id="calculate">Calculate Average</button>
+            <button type="button" id="clear">Clear</button>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>
+        // Add JavaScript code to calculate the average and display the result
+        const calculateButton = document.getElementById("calculate");
+        const clearButton = document.getElementById("clear");
+        const resultElement = document.getElementById("result");
+        const valueInputs = document.querySelectorAll("input[type='number']");
+
+        // Add event listener to the calculate button
+        calculateButton.addEventListener("click", () => {
+            let sum = 0;
+            for (let i = 0; i < valueInputs.length; i++) {
+                sum += parseFloat(valueInputs[i].value);
+            }
+            const average = sum / valueInputs.length;
+            resultElement.textContent = `Average: ${average.toFixed(2)}`;
+        });
+
+        // Add event listener to the clear button
+        clearButton.addEventListener("click", () => {
+            for (let i = 0; i < valueInputs.length; i++) {
+                valueInputs[i].value = "";
+            }
+            resultElement.textContent = "";
+        });
+    </script>
+</body>
+</html>
