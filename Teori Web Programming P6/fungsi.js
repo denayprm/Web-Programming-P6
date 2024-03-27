@@ -19,7 +19,7 @@ function showBarang(){
         var btnHapus = "<a href='#' onclick='deleteBarang("+i+")'>Hapus</a>";
 
 
-        listBarang.innerHTML += "<li>" + dataBarang[i] + " ["+btnEdit + " | "+ btnHapus +"]</li>";        
+        listBarang.innerHTML += "<li>" + dataBarang[i] + " ["+btnEdit + " | "+ btnHapus +"]</li>";
     }
 }
 

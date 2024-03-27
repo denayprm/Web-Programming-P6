@@ -1,72 +1,168 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
-    <title>Average Calculation</title> 
-    <style> 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0; 
-            padding: 0; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            flex-direction: column; 
-            background-color: #f5f5f5; 
-        } 
-        .container { 
-            margin-top: 50px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-        } 
-        input { 
-            margin-bottom: 10px; 
-            padding: 10px; 
-            border: 1px solid #ccc; 
-            border-radius: 5px; 
-            width: 300px; 
-            font-size: 18px; 
-        } 
-        button { 
-            padding: 10px 20px; 
-            background-color: #4CAF50; 
-            color: white; 
-            border: none; 
-            border-radius: 5px; 
-            cursor: pointer; 
-            font-size: 18px; 
-        } 
-        button:hover { 
-            background-color: #45a049; 
-        } 
-        #average { 
-            margin-top: 20px; 
-            font-size: 24px; 
-            font-weight: bold; 
-        } 
-    </style> 
-</head> 
-<body> 
-    <div class="container"> 
-        <h1>Average Calculation</h1> 
-        <label for="num1">Enter first number:</label>
-        <input type="number" id="num1" placeholder="Enter first number" /> 
-        <label for="num2">Enter second number:</label>
-        <input type="number" id="num2" placeholder="Enter second number" /> 
-        <label for="num3">Enter third number:</label>
-        <input type="number" id="num3" placeholder="Enter third number" /> 
-        <button onclick="calculateAverage()">Calculate Average</button> 
-        <p id="average"></p> 
-    </div> 
-    <script> 
-        function calculateAverage() { 
-            const num1 = parseFloat(document.getElementById("num1").value); 
-            const num2 = parseFloat(document.getElementById("num2").value); 
-            const num3 = parseFloat(document.getElementById("num3").value); 
-            const average = (num1 + num2 + num3) / 3; 
-            document.getElementById("average").innerText = `The average is: ${average}`; 
-        } 
-    </script> 
-</body> 
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculate Average</title>
+<style>
+body {
+font-family: 'Times New Roman', Times, serif;
+font-weight: bold;
+text-align: left;
+padding-top: 50px;
+background-color: #fefefe;
+}
+table {
+width: 700px;
+margin: 0 auto;
+background-color: #777;
+color: #1e1e1e;
+padding: 10px;
+border-radius: 2px;
+position: relative;
+margin-bottom: 20px;
+}
+input[type="text"] {
+width: 50px;
+padding: 3px;
+margin-bottom: 2px;
+background-color: #999;
+border: 1px solid #555;
+}
+button {
+margin-right: 10px;
+padding: 2px 10px;
+background-color: #999;
+border: 1px solid #555;
+}
+.blue-border {
+border-color: blue;
+}
+#averageResult {
+display: inline-block;
+background-color: #999;
+border: 1px solid #555;
+width: calc(8% - 6px);
+padding: 5px;
+}
+.popup {
+position: absolute;
+bottom: 10px;
+right: 10px;
+width: 250px;
+height: 150px;
+padding: 10px;
+overflow: hidden;
+border-radius: 5px;
+display: none;
+}
+.popup-top {
+background: #ffffff;
+height: 54%;
+padding: 10px;
+text-align: center;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: Arial, sans-serif;
+font-weight: normal;
+}
+.popup-bottom {
+background-color: #ececec;
+height: 46%;
+padding: 10px;
+text-align: right;
+}
+.popup button {
+padding: 5px 30px;
+float: right;
+margin-top: 5px;
+background-color: lightgray;
+}
+</style>
+</head>
+<body>
+<table>
+<tr>
+<td colspan="2">
+<h1>Calculate average</h1>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<p>Enter the following information and then press
+the AVERAGE button to calculate your grade.</p>
+</td>
+</tr>
+<tr>
+<td>To clear the data fields, press the CLEAR
+button.</td>
+</tr>
+<tr>
+<td>
+Enter Final Exam Grade: <input type="text"
+id="finalExamGrade"><br>
+Enter Homework Grade: <input type="text"
+id="homeworkGrade"><br>
+Enter Projects Grade: <input type="text"
+id="projectsGrade"><br><br>
+</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: left;">
+<button onclick="calculateAverage()"
+class="blue-border">AVERAGE</button>
+<button onclick="clearFields()">CLEAR</button>
+</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: left;">
+Your Average is <span id="averageResult"></span>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<div class="popup" id="popup">
+<div class="popup-top" id="popupInfo"
+style="text-align: center;">
+Your average is
+</div>
+<div class="popup-bottom">
+<button onclick="closePopup()"
+class="blue-border">OK</button>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+function calculateAverage() {
+var finalExamGrade =
+parseFloat(document.getElementById("finalExamGrade").value);
+var homeworkGrade =
+parseFloat(document.getElementById("homeworkGrade").value);
+var projectsGrade =
+parseFloat(document.getElementById("projectsGrade").value);
+var average = (finalExamGrade + homeworkGrade +
+projectsGrade) / 3;
+document.getElementById("averageResult").textContent
+= average.toFixed(1);
+var popup = document.getElementById("popup");
+popup.style.display = "block";
+document.getElementById("popupInfo").textContent =
+"Your average is " + average.toFixed(1);
+}
+function clearFields() {
+document.getElementById("finalExamGrade").value = "";
+document.getElementById("homeworkGrade").value = "";
+document.getElementById("projectsGrade").value = "";
+document.getElementById("averageResult").textContent
+= "";
+var popup = document.getElementById("popup");
+popup.style.display = "none";
+}
+function closePopup() {
+var popup = document.getElementById("popup");
+popup.style.display = "none";
+}
+</script>
+</body>
 </html>

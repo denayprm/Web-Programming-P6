@@ -1,5 +1,88 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Tugas 2 Individu Pertemuan 5 - Deni Permana 2210512015</title>
-    </head>
+<head>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            padding-top: 50px;
+            background-color: #fefefe;
+        }
+        #additionalTable {
+            background-color: #add8e6;
+            width: 400px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        #additionalTable td, #additionalTable th {
+            padding: 10px;
+            border: none;
+        }
+        #additionalTable .resultBox {
+            width: calc(100% - 22px);
+            padding: 3px;
+            background-color: #fefefe;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        #resultButton {
+            margin-top: 10px;
+            background-color: #fefefe;
+            border: 1px solid rgb(0, 102, 255);
+            padding: 8px 20px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Konversi Nilai ke Predikat</title>
+</head>
+<body>
+    <h3>Perhitungan Nilai dengan Javascript</h3>
+    <table id="additionalTable">
+        <tr>
+            <td>Nilai Anda:</td>
+            <td><input type="text" class="resultBox" id="nilaiAndaOutput"></td>
+        </tr>
+        <tr>
+            <td>Anda Mendapatkan Predikat:</td>
+            <td><input type="text" class="resultBox" id="predikatOutput" readonly></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button id="resultButton" onclick="showResult()">Hasilnya</button>
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+        function showResult() {
+            var nilaiAnda = parseFloat(document.getElementById("nilaiAndaOutput").value);
+            var predikat = calculatePredicate(nilaiAnda);
+            document.getElementById("predikatOutput").value = predikat;
+        }
+
+        function calculatePredicate(average) {
+            if (average >= 81 && average <= 100) {
+                return "A";
+            }
+            else if (average >= 71 && average <= 80) {
+                return "AB";
+            }
+            else if (average >= 66 && average <= 70) {
+                return "B";
+            }
+            else if (average >= 61 && average <= 65) {
+                return "BC";
+            }
+            else if (average >= 56 && average <= 60) {
+                return "C";
+            }
+            else if (average >= 41 && average <= 55) {
+                return "D";
+            }
+            else {
+                return "E";
+            }
+        }
+    </script>
+</body>
 </html>

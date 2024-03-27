@@ -1,12 +1,156 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Tugas 1 Individu Pertemuan 5 - Deni Permana 2210512015</title>
-    </head>
-    <body>
-        <div>
-            <h1>Calculate average</h1>
-            <p>Enter the following information and then press the AVERAGE button to calculate your grade.</p>
-            <p>To clear the data fields, press the CLEAR button.</p>
-        </div>
+<head>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            text-align: left;
+            padding-top: 50px;
+            background-color: whitesmoke;
+        }
+        table {
+            width: 700px;
+            margin: 0 auto;
+            background-color: #7b746c;
+            color: #1e1e1e;
+            padding: 10px;
+            border-radius: 2px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 50px;
+            padding: 3px;
+            margin-bottom: 2px;
+            background-color: #938d8d;
+            border: 1px solid #555;
+        }
+        button {
+            margin-right: 10px;
+            padding: 2px 10px;
+            background-color: #938d8d;
+            border: 1px solid #555;
+            cursor: pointer;
+        }
+        .blue-border {
+            border-color: blue;
+        }
+        #averageResult {
+            display: inline-block;
+            background-color: #938d8d;
+            border: 1px solid #555;
+            width: calc(8% - 6px);
+            padding: 5px;
+        }
+        .popup {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 250px;
+            height: 150px;
+            padding: 10px;
+            overflow: hidden;
+            border-radius: 5px;
+            display: none;
+            cursor: pointer;
+        }
+        .popup-top {
+            background: #ffffff;
+            height: 54%;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+        }
+        .popup-bottom {
+            background-color: #ececec;
+            height: 46%;
+            padding: 10px;
+            text-align: right;
+        }
+        .popup button {
+            padding: 5px 30px;
+            float: right;
+            margin-top: 5px;
+            background-color: lightgray;
+        }
+    </style>
+    <title>Calculate Average</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="2">
+                <h1>Calculate average</h1>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p>Enter the following information and then press the AVERAGE button to calculate your grade.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>To clear the data fields, press the CLEAR button.</td>
+        </tr>
+        <tr>
+            <td>
+                Enter Final Exam Grade: <input type="text" id="finalExamGrade"><br>
+                Enter Homework Grade: <input type="text" id="homeworkGrade"><br>
+                Enter Projects Grade: <input type="text" id="projectsGrade"><br><br>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: left;">
+                <button onclick="calculateAverage()" class="blue-border">AVERAGE</button>
+                <button onclick="clearFields()">CLEAR</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: left;">
+                Your Average is <span id="averageResult"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="popup" id="popup">
+                    <div class="popup-top" id="popupInfo" style="text-align: center;">
+                        Your average is
+                    </div>
+                    <div class="popup-bottom">
+                        <button onclick="closePopup()" class="blue-border">OK</button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+        function calculateAverage() {
+            var finalExamGrade = parseFloat(document.getElementById("finalExamGrade").value);
+            var homeworkGrade = parseFloat(document.getElementById("homeworkGrade").value);
+            var projectsGrade = parseFloat(document.getElementById("projectsGrade").value);
+            var average = (finalExamGrade + homeworkGrade + projectsGrade) / 3;
+            document.getElementById("averageResult").textContent = average.toFixed(1);
+            var popup = document.getElementById("popup");
+            popup.style.display = "block";
+            document.getElementById("popupInfo").textContent = "Your average is " + average.toFixed(1);
+        }
+        function clearFields() {
+            document.getElementById("finalExamGrade").value = "";
+            document.getElementById("homeworkGrade").value = "";
+            document.getElementById("projectsGrade").value = "";
+            document.getElementById("averageResult").textContent = "";
+            var popup = document.getElementById("popup");
+            popup.style.display = "none";
+        }
+        function closePopup() {
+            var popup = document.getElementById("popup");
+            popup.style.display = "none";
+        }
+    </script>
+
     </body>
 </html>
