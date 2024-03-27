@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Temperature Conversion</title>
+    </head>
+
+    <body>
+        <h1><strong>Javascript Function</strong></h1>
+        <p>This example calls a function to convert from Fahrenheit to Celsius : </p>
+        <p id="output"></p>
+
+        <script>
+        function convertFahrenheitToCelsius(fahrenheit) {
+            return (5/9) * (fahrenheit - 32);
+        }
+        var fahrenheit = 77;
+        var celsius = convertFahrenheitToCelsius(fahrenheit);
+        document.getElementById("output").innerText = celsius;
+        </script>
+
+    </body>
+</html>
